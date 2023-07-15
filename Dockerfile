@@ -15,4 +15,5 @@ RUN chmod 777 /home 2>/dev/null || true
 RUN chown -R cmcc:cmcc / 2>/dev/null || true
 USER 10086
 # 设置默认的命令，即启动应用程序
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
+CMD ["node", "index.js"]
