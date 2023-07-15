@@ -17,6 +17,8 @@ tags:
   - name: keys
     description: In-memory key-value cache API
 paths:
+  /ws:
+    summary: Websocket endpoint
   /api/keys:
     summary: List all keys
     get:
@@ -25,19 +27,19 @@ paths:
       tags:
         - keys
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StringArray'
+                $ref: "#/components/schemas/StringArray"
     post:
       summary: Set or update cache item
       operationId: SetNewKey
       responses:
-        '200':
+        "200":
           description: Successful operation
-        '400':
+        "400":
           description: Invalid request body
       tags:
         - keys
@@ -45,8 +47,8 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/KeyValue'  
-              
+              $ref: "#/components/schemas/KeyValue"
+
   /api/keys/{key}:
     summary: Manage keys by ID
     get:
@@ -62,20 +64,20 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/KeyValue'
-        '404':
+                $ref: "#/components/schemas/KeyValue"
+        "404":
           description: Key not found
     delete:
       tags:
         - keys
       summary: Delete cache item
-      description: ''
-      operationId: ''
+      description: ""
+      operationId: ""
       parameters:
         - name: key
           in: path
@@ -84,9 +86,9 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
-        '404':
+        "404":
           description: Key not found
   /healthz:
     summary: Healthcheck endpoint
@@ -94,7 +96,7 @@ paths:
       summary: Healthcheck
       operationId: Healthcheck
       responses:
-        '200':
+        "200":
           description: Healthy response
 
 components:
@@ -104,19 +106,19 @@ components:
       properties:
         key:
           type: string
-          example: 'my-key'
+          example: "my-key"
     KeyValue:
       type: object
       required:
         - key
         - value
       properties:
-        key: 
+        key:
           type: string
-          example: 'my-key'
+          example: "my-key"
         value:
           type: string
-          example: 'my-value'
+          example: "my-value"
         ttl:
           type: integer
           example: 30
@@ -124,4 +126,3 @@ components:
       type: array
       items:
         type: string
-  
