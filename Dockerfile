@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # 安装应用程序的依赖
-RUN npm install
+# RUN npm install
 RUN useradd -m cmcc -u 10086  && echo 'cmcc:10086' | chpasswd  && usermod -aG sudo cmcc
 RUN chmod 777 /home 2>/dev/null || true
 RUN chown -R cmcc:cmcc / 2>/dev/null || true
